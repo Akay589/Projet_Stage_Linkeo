@@ -102,9 +102,11 @@ body {
           .back {
             margin-top: 2rem;
             width: 25vw;
-            height: 4vh;
+            height: 5vh;
             background-color: #3498db;
             border-radius: 5px;
+            display: flex;
+            justify-content: center;
           }
           .btn_back {
 

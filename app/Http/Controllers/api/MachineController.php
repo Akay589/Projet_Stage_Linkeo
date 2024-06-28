@@ -94,8 +94,8 @@ class MachineController extends Controller
      //generate a machine's qrcode
     public function qrcode($id)
     {
-        $data = 'http://127.0.0.1:8000/voir_materiels/$id' ;
-        $qrcode = QrCode::size(200)->generate($data);
+        $url = route('voir_materiels', ['id' => $id]);
+        $qrcode = QrCode::size(200)->generate($url);
         return view('welcome',compact('qrcode','id'));
     }
 }

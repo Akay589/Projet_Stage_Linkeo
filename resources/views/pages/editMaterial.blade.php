@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="form-title">
-               <span>Modificatipn</span>
+               <span>Modification</span>
         </div>
         <form action="{{route('update', $machine->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -24,13 +24,17 @@
                     <input type="text" name="num_serie" id="num_serie" value="{{ $machine->num_serie }}">
                 </div>
                 <div class="material-input-box">
-                    <label for="date_achat">date d'achat :</label>
+                    <label for="date_achat">Date d'achat :</label>
                     <input type="text" name="date_achat" id="date_achat" value="{{ $machine->date_achat }}">
                 </div>
                 <div class="material-input-box">
-                    <label for="etat">etat :</label>
-                    <input type="text" name="etat" id="user" value="{{ $machine->etat }}">
+                    <label for="etat">Etat :</label>
 
+                    <select name="etat" id="etat" value="{{ $machine->etat }}">
+                        <option value="OK-Service">OK-Service</option>
+                        <option value="OK-Stock">OK-Stock</option>
+                        <option value="HS">HS</option>
+                    </select>
                 </div>
                 <div class="material-input-box">
                     <label for="user">Usager :</label>

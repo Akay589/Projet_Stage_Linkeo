@@ -38,11 +38,11 @@
                         <input type="text" name="num_serie" id="num_serie" placeholder="Numéro de série">
                     </div>
                     <div class="material-input-box">
-                        <label for="date_achat">date d'achat :</label>
+                        <label for="date_achat">Date d'achat :</label>
                         <input type="text" name="date_achat" id="date_achat" placeholder="Date d'achat">
                     </div>
                     <div class="material-input-box">
-                        <label for="etat">etat :</label>
+                        <label for="etat">Etat :</label>
                          <select name="etat" id="etat">
                                <option value="OK-Service">OK-Service</option>
                                <option value="OK-Stock">OK-Stock</option>

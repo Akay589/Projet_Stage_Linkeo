@@ -14,13 +14,9 @@
                 <h5>Qr code du ID = {{ $id }}</h5>
             </div>
             <div class="image">
-                {!! $qrcode !!}
+                <img src="{{ $qrCodePath }}" alt="QR Code">
             </div>
 
-            <div class="back">
-                <a class="btn_back" href="{{ route('pdf', ['id' => $id])}}">Imprimer</a>
-                <a class="btn_edit" href="{{ route('/home') }}">Retour</a>
-            </div>
 
       </div>
 

@@ -86,7 +86,17 @@ body {
  color: white;
  background: #3498db;
 }
-
+.form-submit-btn input{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background: #3498db;
+   }
 /**responsive design*/
 @media (max-width: 650px)
 {

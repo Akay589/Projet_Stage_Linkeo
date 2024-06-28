@@ -59,8 +59,8 @@
                  <br>
 
             <div class="back">
-                <a class="btn_back" href="{{ route('/home') }}">Retour</a>
-                <a class="btn_edit" href="{{ route('/home') }}">Modifier</a>
+                <a class="btn_back" href="{{ route('liste_material') }}">Retour</a>
+                <a class="btn_edit" href="{{ route('edit_material', $machines->id) }}">Modifier</a>
             </div>
 
       </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\MachineController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -17,11 +18,11 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 
-Route::get('/auth', [AuthController::class, 'auth'])->name('/auth');
-Route::post('/login', [AuthController::class, 'login'])->name('/login');
-//Route::get('/logout_admin', [AuthController::class, 'logout_admin'])->name('/logout_admin');
+Route::get('/auth', [ViewController::class, 'login'])->name('/auth');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout_admin', [AuthController::class, 'logout_admin'])->name('/logout_admin');
 
-Route::group(['middleware' => 'admin'], function () {
+
     Route::get('/home', [ViewController::class,'home'])->name('/home');
     Route::get('/add_material', [ViewController::class,'addMat'])->name('add_material');
     Route::get('/liste_material', [ViewController::class,'listemat'])->name('liste_material');
@@ -33,4 +34,5 @@ Route::group(['middleware' => 'admin'], function () {
     Route::delete('/destroy/{id}', [MachineController::class,'destroy'])->name('destroy');
     Route::put('/update/{id}', [MachineController::class,'update'])->name('update');
 
-});
+
+    Route::get('/pdf/{id}', [QrcodeController::class,'qrcode_pdf'])->name('pdf');

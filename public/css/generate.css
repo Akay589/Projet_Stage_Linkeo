@@ -26,10 +26,13 @@ body {
     display: flex;
      flex-direction: column;
     justify-content: center;
-    align-items: center;
+
 }
 .image {
     margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
 }
 .back {
     margin-top: 40px;
@@ -52,7 +55,24 @@ body {
     align-items: center;
 
 }
+.back .btn_edit
+{
+    width: 110px;
+    height: 45px;
+    color: white;
+    background-color: #6ca6e4;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
 
 .back a{
  text-decoration: none;
+}
+
+.title h5 {
+    text-align: center;
 }

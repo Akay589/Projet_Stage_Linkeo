@@ -1,13 +1,14 @@
 <?php
 
 return [
-    
-    
- 
+
+
+
 
 'aliases' => [
- 
- 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+
+ 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+
  ],
     /*
     |--------------------------------------------------------------------------
@@ -129,5 +130,7 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+
 
 ];
