@@ -46,7 +46,7 @@ body {
       position: sticky;
       top: 0px;
 
-      background-color: #53b6b6;
+      background-color: #151616;
       color: white;
      }
   .table-wrapper {
@@ -84,7 +84,7 @@ body {
 @media (max-width: 650px)
 {
     .container {
-        min-width: 380px;
+        min-width: 392px;
         }
         body {
             display: flex;

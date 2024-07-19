@@ -56,7 +56,7 @@ form .row input:focus {
  color: aliceblue;
  font-size: 18px;
  width: 47px;
- height: 100%;
+ height: 96%;
  background: #3498db;
  border: 1px solid #3498db;
  border-radius: 5px 0 0 5px;
@@ -108,6 +108,19 @@ padding-left: 0;
         border-radius: 5px;
         border: 1px solid lightgrey;
       }
+      .wrapper form .row i{
+        position: absolute;
+        color: aliceblue;
+        font-size: 18px;
+        width: 47px;
+        height: 95%;
+        background: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 5px 0 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       }
       .wrapper form .button input {
         padding-left: 0px;
         background: #2980b9;

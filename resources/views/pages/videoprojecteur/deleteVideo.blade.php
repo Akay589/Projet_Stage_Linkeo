@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +11,18 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container mt-4">
+   <div class="container mt-4">
        <div class="row justify-content-center bg-light p-4">
             <div class="col-lg-8">
-                <h3>Voulez-vous vraiment supprimer {{$machine->designation}} ?</h3>
+                <h3>Voulez-vous vraiment supprimer {{$projecteurs->designation}} ?</h3>
                 <div>
-                    <form action="{{route('destroy', $machine->id)}}" method="POST">
+                    <form action="{{route('destroy_projecteur', $projecteurs->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
 
                         <div class="back">
                             <button type="submit" class="btn_back">OUI</button>
-                            <button  class="btn_edit"><a style="text-decoration: none; color: white;" href="{{route('liste_material')}}">NON</a></button>
+                            <button  class="btn_edit"><a style="text-decoration: none; color: white;" href="{{route('liste_projecteurs')}}">NON</a></button>
 
                         </div>
                     </form>
@@ -29,5 +31,11 @@
             </div>
         </div>
     </div>
+
+
+
 </body>
 </html>
+
+
+

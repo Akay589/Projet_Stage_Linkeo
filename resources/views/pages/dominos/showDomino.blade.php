@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,48 +20,53 @@
 <body>
       <div class="container">
              <div class="form-title">
-                   <span>Détails Matériels</span>
+                   <span>Détails Clés/Domino</span>
              </div>
 
                  <div class="main-material-info">
                     <div class="material-input-box">
-                         <p id="designation"> <span>Désignation : </span> {{ $machines->designation}} </p>
+                         <p id="imei"> <span>Imei : </span> {{ $dominos->imei}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="num_serie"> <span> Numéro de série :</span> {{ $machines->num_serie}} </p>
+                        <p id="type"> <span>Type :</span> {{ $dominos->type}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="date_achat"> <span>date d'achat :</span>  {{ $machines->date_achat}} </p>
+                        <p id="date_achat"> <span>date d'achat :</span>  {{ $dominos->date_achat}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="etat"> <span>etat :</span>  {{ $machines->etat}}</p>
+                        <p id="status"> <span>status :</span>   {{ $dominos->status}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="user"> <span>Usager :</span>  {{ $machines->user}} </p>
+                        <p id="user"> <span>Usager :</span>   {{ $dominos->user}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="etiquette">  <span>Etiquette :</span> {{ $machines->etiquette}} </p>
+                        <p id="etiquette">  <span>Etiquette :</span>  {{ $dominos->etiquette}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="remarque"> <span>Remarque :</span> {{ $machines->remarque}} </p>
+                        <p id="remarque"> <span>Remarque :</span>  {{ $dominos->remarque}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="status"> <span> Status:</span> {{ $machines->status}} </p>
+                        <p id="service"> <span>Poste :</span>  {{ $dominos->service}}</p>
 
                     </div>
+                    <div class="material-input-box">
+                        <p id="operateur"> <span>Operateur :</span>  {{ $dominos->operateur}}</p>
+
+                    </div>
+
                  </div>
                  <br>
 
             <div class="back">
-                <a class="btn_back" href="{{ route('liste_material') }}">Retour</a>
-                <a class="btn_edit" href="{{ route('edit_material', $machines->id) }}">Modifier</a>
+                <a class="btn_back" href="{{ route('liste_dominos') }}">Retour</a>
+                <a class="btn_edit" href="{{ route('edit_domino', $dominos->id) }}">Modifier</a>
             </div>
 
       </div>

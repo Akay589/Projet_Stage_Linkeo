@@ -20,7 +20,7 @@ class Machine extends Model
            'user',
            'etiquette',
            'remarque',
-           'status',
+           'service',
 
     ];
 }

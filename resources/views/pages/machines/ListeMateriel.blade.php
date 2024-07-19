@@ -22,7 +22,7 @@
 <body>
        <div class="container">
             <div class="form-title">
-                    <span>Liste des matériels</span>
+                    <span>Liste des machines</span>
             </div>
             <div class="outer-wrapper">
                   <div class="table-wrapper">
@@ -43,10 +43,10 @@
                                 <td>{{$machine->etat}}</td>
                                 <td>{{$machine->user}}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('voir_materiels', $machine->id) }}"><i class="fa-solid fa-circle-info"></i></a>
-                                    <a class="btn btn-success" href="{{ route('edit_material', $machine->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a class="btn btn-danger" href="{{ route('delete', $machine->id) }}"><i class="fa-solid fa-trash"></i></a>
-                                    <a class="btn btn-secondary" href="{{ route('generate', $machine->id) }}"><i class="fa-solid fa-qrcode"></i></a>
+                                    <a class="btn btn-primary" href="{{ route('voir_machine', $machine->id) }}"><i class="fa-solid fa-circle-info"></i></a>
+                                    <a class="btn btn-success" href="{{ route('edit_machine', $machine->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="btn btn-danger" href="{{ route('delete_machine', $machine->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                    <a class="btn btn-secondary" href="{{ route('generate_machine', $machine->id) }}"><i class="fa-solid fa-qrcode"></i></a>
                                 </th>
                            </tbody>
                         @endforeach
@@ -56,8 +56,9 @@
 
 
             <div class="back">
-                <a class="btn_back" href="{{ route('/home') }}">Retour</a>
+                <a class="btn_back" href="{{ route('liste') }}">Retour</a>
             </div>
        </div>
 </body>
 </html>
+

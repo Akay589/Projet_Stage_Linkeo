@@ -25,13 +25,13 @@ class AdminMiddleware
                 else
                 {
                     Auth::logout();
-                    return redirect('login');
+                    return redirect('/auth');
                 }
         }
         else
         {
             Auth::logout();
-            return redirect('login');
+            return redirect('/auth');
         }
     }
 }

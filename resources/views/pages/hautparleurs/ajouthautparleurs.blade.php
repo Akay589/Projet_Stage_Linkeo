@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--style Css-->
-         <link rel="stylesheet" href="{{ url('css/ajoutmat.css') }}">
+         <link rel="stylesheet" href="{{ url('css/ajoutmach.css') }}">
     <!--Bootstrap-->
 
     <!--Fontawesome-->
@@ -19,14 +19,15 @@
 <body>
       <div class="container">
              <div class="form-title">
-                    <span>Ajout Matériel</span>
+                    <span>Ajout Haut Parleur</span>
              </div>
              @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}Matériel
                 </div>
+
              @endif
-             <form action="{{ route('machine_add') }}" method="POST" enctype="multipart/form-data">
+             <form action="{{ route('hautparleur_add') }}" method="POST" enctype="multipart/form-data">
               @csrf
                  <div class="main-material-info">
                     <div class="material-input-box">
@@ -42,8 +43,8 @@
                         <input type="text" name="date_achat" id="date_achat" placeholder="Date d'achat">
                     </div>
                     <div class="material-input-box">
-                        <label for="etat">Etat :</label>
-                         <select name="etat" id="etat">
+                        <label for="status">Status :</label>
+                         <select name="status" id="status">
                                <option value="OK-Service">OK-Service</option>
                                <option value="OK-Stock">OK-Stock</option>
                                <option value="HS">HS</option>
@@ -51,8 +52,8 @@
 
                     </div>
                     <div class="material-input-box">
-                        <label for="user">Usager :</label>
-                        <input type="text" name="user" id="user" placeholder="Propriétaire du matériel">
+                        <label for="emplacement">Emplacement :</label>
+                        <input type="text" name="emplacement" id="emplacement" placeholder="L'utilisateur de l'imprimante">
                     </div>
                     <div class="material-input-box">
                         <label for="etiquette">Etiquette :</label>
@@ -62,10 +63,8 @@
                         <label for="remarque">Remarque :</label>
                         <input type="text" name="remarque" id="remarque" placeholder="Remarque sur ce matériel">
                     </div>
-                    <div class="material-input-box">
-                        <label for="status">Status:</label>
-                        <input type="text" name="status" id="status" placeholder="Le status">
-                    </div>
+
+
                  </div>
                  <br>
                  <div class="form-submit-btn">
@@ -73,11 +72,29 @@
                  </div>
                  <br>
 
-                 <div class="back">
-                     <a class="btn_back" href="{{ route('/home') }}">Retour</a>
-                 </div>
+
              </form>
+             <div class="form-submit-btn">
+                <a class="btn_back prev" href="{{ route('add_material') }}"><i class="fa-solid fa-backward"></i></a>
+            </div>
 
       </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      @if(session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Succès!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3498db',
+                    willClose: () => {
+                        window.location.href = '{{ route('liste_hautparleurs') }}';
+                    }
+                });
+            </script>
+       @endif
+
 </body>
 </html>

@@ -24,7 +24,8 @@ class MachineController extends Controller
            'user' => 'required',
            'etiquette' => 'required',
            'remarque' => 'required',
-           'status' => 'required'
+
+           'service' => 'required'
         ]);
 
         $machine = new Machine();
@@ -35,11 +36,11 @@ class MachineController extends Controller
         $machine->user = $request->input('user');
         $machine->etiquette = $request->input('etiquette');
         $machine->remarque = $request->input('remarque');
-        $machine->status = $request->input('status');
 
+        $machine->service = $request->input('service');
         $machine->save();
 
-        return redirect()->route('liste_material')->with('success','Créer avec succès!');
+        return redirect()->route('liste_machine')->with('success','Créer avec succès!');
     }
 
     //show all machines
@@ -49,7 +50,7 @@ class MachineController extends Controller
 
        $machines = Machine::findOrFail($id);
 
-       return view('pages.showMaterial', compact('machines'));
+       return view('pages.machines.showMaterial', compact('machines'));
     }
 
      //delete a machine
@@ -57,7 +58,7 @@ class MachineController extends Controller
      {
          $machine = Machine::findOrFail($id);
 
-         return view('pages.deleteMaterial', compact('machine'));
+         return view('pages.machines.deleteMaterial', compact('machine'));
      }
 
      public function index (string $id)
@@ -66,7 +67,7 @@ class MachineController extends Controller
 
         $machine = Machine::findOrFail($id);
 
-        return view('pages.editMaterial', compact('machine'));
+        return view('pages.machines.editMaterial', compact('machine'));
      }
 
      /**
@@ -78,7 +79,7 @@ class MachineController extends Controller
 
          $machine->delete();
 
-         return redirect()->route('liste_material')->with('success','Contenu supprimé avec succès!');
+         return redirect()->route('liste_machine')->with('success','Contenu supprimé avec succès!');
      }
 
      //update a machine
@@ -88,13 +89,13 @@ class MachineController extends Controller
 
          $machine->update($request->all());
 
-         return redirect()->route('liste_material')->with('success','Contenu modifié avec succès!');
+         return redirect()->back()->with('success','Contenu modifié avec succès!');
      }
 
      //generate a machine's qrcode
     public function qrcode($id)
     {
-        $url = route('voir_materiels', ['id' => $id]);
+        $url = route('voir_machine', ['id' => $id]);
         $qrcode = QrCode::size(200)->generate($url);
         return view('welcome',compact('qrcode','id'));
     }
