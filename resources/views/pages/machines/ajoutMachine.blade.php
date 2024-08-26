@@ -21,7 +21,7 @@
 <body>
       <div class="container">
              <div class="form-title">
-                    <span>Ajout Machine</span>
+                    <span>Ajout Matériel</span>
              </div>
              @if(session('success'))
                 <div class="alert alert-success">
@@ -29,9 +29,13 @@
                 </div>
 
              @endif
-             <form action="{{ route('machine_add') }}" method="POST" enctype="multipart/form-data">
+             <form action="{{ route('materiel_add') }}" method="POST" enctype="multipart/form-data">
               @csrf
                  <div class="main-material-info">
+                    <div class="material-input-box">
+                        <label for="categorie">Catégorie : </label>
+                        <input type="text" name="categorie" id="categorie" placeholder="Catégorie du matériel">
+                   </div>
                     <div class="material-input-box">
                          <label for="designation">Designation : </label>
                          <input type="text" name="designation" id="designation" placeholder="Désignation du matériel">
@@ -45,8 +49,8 @@
                         <input type="text" name="date_achat" id="date_achat" placeholder="Date d'achat">
                     </div>
                     <div class="material-input-box">
-                        <label for="etat">etat :</label>
-                         <select name="etat" id="etat">
+                        <label for="status">Status :</label>
+                         <select name="status" id="status">
                                <option value="OK-Service">OK-Service</option>
                                <option value="OK-Stock">OK-Stock</option>
                                <option value="HS">HS</option>
@@ -54,8 +58,8 @@
 
                     </div>
                     <div class="material-input-box">
-                        <label for="user">Usager :</label>
-                        <input type="text" name="user" id="user" placeholder="Propriétaire du matériel">
+                        <label for="usager">Usager :</label>
+                        <input type="text" name="usager" id="usager" placeholder="Propriétaire du matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="etiquette">Etiquette :</label>
@@ -65,10 +69,13 @@
                         <label for="remarque">Remarque :</label>
                         <input type="text" name="remarque" id="remarque" placeholder="Remarque sur ce matériel">
                     </div>
-
                     <div class="material-input-box">
-                        <label for="service">Poste:</label>
-                        <input type="text" name="service" id="service" placeholder="Le fonction du propriétaire">
+                        <label for="services">Emplacement:</label>
+                        <input type="text" name="emplacement" id="emplacement" placeholder="l'emplacement du matériel">
+                    </div>
+                    <div class="material-input-box">
+                        <label for="services">Poste:</label>
+                        <input type="text" name="services" id="services" placeholder="La fonction du propriétaire">
                     </div>
                  </div>
                  <br>
@@ -80,9 +87,25 @@
 
              </form>
              <div class="form-submit-btn">
-                <a class="btn_back prev" href="{{ route('add_material') }}"><i class="fa-solid fa-backward"></i></a>
+                <a class="btn_back prev" href="{{ route('home') }}"><i class="fa-solid fa-backward"></i></a>
             </div>
 
       </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      @if(session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Succès!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#3498db',
+                    willClose: () => {
+                        window.location.href = '{{ route('home') }}';
+                    }
+                });
+            </script>
+       @endif
 </body>
 </html>

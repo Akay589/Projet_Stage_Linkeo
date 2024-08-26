@@ -20,7 +20,7 @@ class QrcodeController extends Controller
 
     public function qrcode_pdf($id)
     {
-        $url = route('voir_materiels', ['id' => $id]);
+        $url = route('voir_materiel', ['id' => $id]);
         $qrcode = QrCode::format('png')->size(200)->generate($url);
         $qrCodePath = storage_path('app/public/qrcode.png');
         file_put_contents($qrCodePath, $qrcode);
@@ -34,4 +34,5 @@ class QrcodeController extends Controller
 
 
     }
+
 }

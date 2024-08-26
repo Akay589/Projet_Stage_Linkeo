@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="{{ url('css/ajoutmat.css') }}">
-    <title>home</title>
+    <title>Liste matériel</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
 
 
@@ -42,7 +42,7 @@
                             </div>
                             <div class="row button">
 
-                                <a class="btn btn-primary" href="{{ route('liste_machine') }}">Liste des souris</a>
+                                <a class="btn btn-primary" href="{{ route('liste_souris') }}">Liste des souris</a>
 
                             </div>
                             <div class="row button">
@@ -93,7 +93,7 @@
                             </div>
                             <div class="row button">
 
-                                <a class="btn btn-primary" href="{{ route('liste_machine') }}">Liste des caméras</a>
+                                <a class="btn btn-primary" href="{{ route('liste_cameras') }}">Liste des caméras</a>
 
                             </div>
 

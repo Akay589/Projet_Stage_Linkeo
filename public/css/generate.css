@@ -76,3 +76,34 @@ body {
 .title h5 {
     text-align: center;
 }
+
+
+/**responsive design*/
+@media (max-width: 650px)
+ {
+    .back .btn_back {
+        width: 97px;
+        height: 43px;
+        color: white;
+        background-color: #3498db;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 16px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+      .back .btn_edit {
+        width: 97px;
+        height: 43px;
+        color: white;
+        background-color: #6ca6e4;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 16px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+ }
+

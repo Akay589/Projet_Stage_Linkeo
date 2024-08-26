@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -18,110 +17,90 @@
 
 
 
-       <div class="wrapper" id="content">
+    <div class="container">
 
 
                 <div class="log_title">
                     <span>Suivi Matériel</span>
                 </div>
-                <div class="linkeo_logo">
+                <!--div class="linkeo_logo">
                     <img src="images/logo.png" alt="" />
+                </!--div!-->
+                <form class="form_search" action="{{ route('materiels.search') }}" method="GET">
+                    <label for="search_by">Recherche par :</label>
+                    <select name="search_by" id="search_by" required>
+                        <option value="categorie">Catégorie</option>
+                        <option value="designation">Désignation</option>
+                        <option value="usager">Usager</option>
+                        <option value="num_serie">Numéro de série</option>
+                        <option value="services">Services</option>
+                    </select>
+
+                    <input class="search_input" type="text" name="query" placeholder="Entrez votre recherche..." required>
+                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                </form>
+
+                <div class="outer-wrapper">
+                    <div class="table-wrapper">
+                      <table>
+                            <thead>
+                                  <th>Catégorie</th>
+                                  <th>Designation</th>
+                                  <th>Usager</th>
+                                  <th>Action</th>
+                            </thead>
+
+                            <tbody>
+                            @if($materiels->isEmpty())
+                                <tr>
+                                    <td colspan="5" style="text-align: center;">Aucun matériel de ce type</td>
+                                </tr>
+
+
+                            @else
+                                @foreach ($materiels as $materiel )
+                                    <tr>
+                                        <td>{{$materiel->categorie}}</td>
+                                        <td>{{$materiel->designation}}</td>
+
+                                        <td>{{$materiel->usager}}</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ route('voir_materiel', $materiel->id) }}"><i class="fa-solid fa-circle-info"></i></a>
+                                            <a class="btn btn-success" href="{{ route('edit_materiel', $materiel->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-danger" href="{{ route('delete_materiel', $materiel->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                            <a class="btn btn-secondary" href="{{ route('generate_materiel', $materiel->id) }}"><i class="fa-solid fa-qrcode"></i></a>
+                                        </td>
+                                    </tr>
+
+
+                                @endforeach
+                            @endif
+                            </tbody>
+
+                      </table>
+                    </div>
                 </div>
-                <div class="menus">
+                <div class="back">
+                    <a class="btn_back" href="{{ route('materiel.scan') }}"  type="submit">
+                       Faire un scan
 
-                        <div class="row button">
-
-                            <a class="btn btn-primary" href="{{ route('add_material') }}">Nouveau matériel</a>
-
-                        </div>
-                        <div class="row button">
-
-                            <button class="btn btn-primary" id="start-scan">Faire un scan</button>
-                            <div id="scanModal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <h2>Scanner QR Code</h2>
-                                    <!-- Div pour afficher la caméra -->
-                                    <video id="preview" width="100%"></video>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row button">
-
-                            <a class="btn btn-primary" href="{{ route('liste') }}">Liste des matériels</a>
-
-                        </div>
+                    </a>
 
 
+                    <a class="btn_edit" href="{{ route('add_machine') }}">Nouveau matériel</a>
                 </div>
+
+
                 <div class="logout">
                     <a class="logout_icon" href="{{ route('logout_admin') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </div>
-       </div>
+    </div>
 
-       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-       <script>
-        document.getElementById('start-scan').addEventListener('click', function() {
-            Swal.fire({
-                title: 'Scanner QR Code',
-                titleColor : '#292b2c',
-                html: '<div id="qr-reader" style="width: 100%;"></div>',
-                showCancelButton: true,
-                cancelButtonColor : '#2073bd',
-                showConfirmButton: false,
-                cancelButtonText: "Annuler",
-                width: '90%',
-                didOpen: () => {
-                    const html5QrCode = new Html5Qrcode("qr-reader");
-                    html5QrCode.start(
-                        { facingMode: "environment" },
-                        {
-                            fps: 10,
-                            qrbox: function(viewfinderWidth, viewfinderHeight) {
-                                // Adjust the QR code box size dynamically based on the viewfinder size
-                                var minDimension = Math.min(viewfinderWidth, viewfinderHeight);
-                                var qrboxSize = Math.floor(minDimension * 0.7);
-                                return { width: qrboxSize, height: qrboxSize };
-                            }
-                        },
-                        (decodedText, decodedResult) => {
-                            // Rediriger vers l'URL scannée
-                            window.location.href = decodedText;
-                        },
-                        (errorMessage) => {
-                            console.log(errorMessage);
-                        }
-                    ).catch((err) => {
-                        console.log(err);
-                    });
 
-                    // Arrêter le scan quand le modal est fermé
-                    Swal.getPopup().addEventListener('close', () => {
-                        html5QrCode.stop().then((ignore) => {
-                            html5QrCode.clear();
-                        }).catch((err) => {
-                            console.log(err);
-                        });
-                    });
-                },
-                willClose: () => {
-                    // Nettoyer le lecteur QR
-                    Html5Qrcode.getCameras().then(cameras => {
-                        if (cameras && cameras.length) {
-                            const html5QrCode = new Html5Qrcode("qr-reader");
-                            html5QrCode.stop().then(() => {
-                                html5QrCode.clear();
-                            }).catch((err) => {
-                                console.log(err);
-                            });
-                        }
-                    });
-                }
-            });
-        });
-        </script>
+
+
+
 
 </body>
 </html>

@@ -22,49 +22,57 @@
 <body>
       <div class="container">
              <div class="form-title">
-                   <span>Détails Machine</span>
+                   <span>Détails Matériel</span>
              </div>
 
                  <div class="main-material-info">
                     <div class="material-input-box">
-                         <p id="designation"> <span>Désignation : </span> {{ $machines->designation}}</p>
+                         <p id="categorie"> <span>Catégorie : </span> {{ $materiels->categorie}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="num_serie"> <span> Numéro de série :</span> {{ $machines->num_serie}} </p>
+                        <p id="designation"> <span>Désignation : </span> {{ $materiels->designation}}</p>
+
+                   </div>
+                    <div class="material-input-box">
+                        <p id="num_serie"> <span> Numéro de série :</span> {{ $materiels->num_serie}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="date_achat"> <span>date d'achat :</span> {{ $machines->date_achat}} </p>
+                        <p id="date_achat"> <span>date d'achat :</span> {{ $materiels->date_achat}} </p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="etat"> <span>etat :</span>  {{ $machines->etat}}</p>
+                        <p id="status"> <span>status :</span>  {{ $materiels->status}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="user"> <span>Usager :</span> {{ $machines->user}}</p>
+                        <p id="usager"> <span>Usager :</span> {{ $materiels->usager}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="etiquette">  <span>Etiquette :</span> {{ $machines->etiquette}}</p>
+                        <p id="etiquette">  <span>Etiquette :</span> {{ $materiels->etiquette}}</p>
 
                     </div>
                     <div class="material-input-box">
-                        <p id="remarque"> <span>Remarque :</span> {{ $machines->remarque}} </p>
+                        <p id="remarque"> <span>Remarque :</span> {{ $materiels->remarque}} </p>
+
+                    </div>
+                    <div class="material-input-box">
+                        <p id="emplacement"> <span>Emplacement :</span> {{ $materiels->emplacement}} </p>
 
                     </div>
 
                     <div class="material-input-box">
-                        <p id="service"> <span> Poste:</span> {{ $machines->service}} </p>
+                        <p id="services"> <span> Poste:</span> {{ $materiels->services}} </p>
 
                     </div>
                  </div>
                  <br>
 
             <div class="back">
-                <a class="btn_back" href="{{ route('liste_machine') }}">Retour</a>
-                <a class="btn_edit" href="{{ route('edit_machine', $machines->id) }}">Modifier</a>
+                <a class="btn_back" href="{{ route('home') }}">Retour</a>
+                <a class="btn_edit" href="{{ route('edit_materiel', $materiels->id) }}">Modifier</a>
             </div>
 
       </div>

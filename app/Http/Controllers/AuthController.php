@@ -12,7 +12,7 @@ class AuthController extends Controller
         if(!empty(Auth::check()) && Auth::user()-> role_id == 1)
              {
 
-                return redirect('/home');
+                return redirect('home');
              }
         return view('pages.athentification');
     }
@@ -21,7 +21,7 @@ class AuthController extends Controller
 
        if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role_id'=> 1 ]))
          {
-            return redirect('/home');
+            return redirect('home');
          }
         else
          {

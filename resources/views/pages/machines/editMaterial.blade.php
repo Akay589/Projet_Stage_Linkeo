@@ -16,47 +16,54 @@
         <div class="form-title">
                <span>Modification</span>
         </div>
-        <form action="{{route('update_machine', $machine->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('update_materiel', $materiels->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="main-material-info">
                 <div class="material-input-box">
-                     <label for="designation">Designation : </label>
-                     <input type="text" name="designation" id="designation" value="{{ $machine->designation }}">
+                     <label for="categorie">Catégorie : </label>
+                     <input type="text" name="categorie" id="categorie" value="{{ $materiels->categorie }}">
                 </div>
                 <div class="material-input-box">
+                    <label for="designation">Designation : </label>
+                    <input type="text" name="designation" id="designation" value="{{ $materiels->designation }}">
+               </div>
+                <div class="material-input-box">
                     <label for="num_serie">Numéro de série :</label>
-                    <input type="text" name="num_serie" id="num_serie" value="{{ $machine->num_serie }}">
+                    <input type="text" name="num_serie" id="num_serie" value="{{ $materiels->num_serie }}">
                 </div>
                 <div class="material-input-box">
                     <label for="date_achat">Date d'achat :</label>
-                    <input type="text" name="date_achat" id="date_achat" value="{{ $machine->date_achat }}">
+                    <input type="text" name="date_achat" id="date_achat" value="{{ $materiels->date_achat }}">
                 </div>
                 <div class="material-input-box">
-                    <label for="etat">etat :</label>
+                    <label for="status">status :</label>
 
-                    <select name="etat" id="etat" value="{{ $machine->etat }}">
+                    <select name="status" id="status" value="{{ $materiels->status }}">
                         <option value="OK-Service">OK-Service</option>
                         <option value="OK-Stock">OK-Stock</option>
                         <option value="HS">HS</option>
                     </select>
                 </div>
                 <div class="material-input-box">
-                    <label for="user">Usager :</label>
-                    <input type="text" name="user" id="user" value="{{ $machine->user }}">
+                    <label for="usager">Usager :</label>
+                    <input type="text" name="usager" id="usager" value="{{ $materiels->usager }}">
                 </div>
                 <div class="material-input-box">
                     <label for="etiquette">Etiquette :</label>
-                    <input type="text" name="etiquette" id="etiquette" value="{{ $machine->etiquette }}">
+                    <input type="text" name="etiquette" id="etiquette" value="{{ $materiels->etiquette }}">
                 </div>
                 <div class="material-input-box">
                     <label for="remarque">Remarque :</label>
-                    <input type="text" name="remarque" id="remarque" value="  {{ $machine->remarque }}">
+                    <input type="text" name="remarque" id="remarque" value="  {{ $materiels->remarque }}">
                 </div>
-
                 <div class="material-input-box">
-                    <label for="service">Poste:</label>
-                    <input type="text" name="service" id="service" value="  {{ $machine->service }}">
+                    <label for="emplacement">Emplacement :</label>
+                    <input type="text" name="emplacement" id="emplacement" value="  {{ $materiels->emplacement }}">
+                </div>
+                <div class="material-input-box">
+                    <label for="services">Poste:</label>
+                    <input type="text" name="services" id="services" value="  {{ $materiels->services}}">
                 </div>
              </div>
              <div class="form-submit-btn">
@@ -65,7 +72,7 @@
 
         </form>
         <div class="form-submit-btn">
-            <a class="btn_back prev" href="{{ route('liste_machine') }}"><i class="fa-solid fa-backward"></i></a>
+            <a class="btn_back prev" href="{{ route('home') }}"><i class="fa-solid fa-backward"></i></a>
         </div>
 
     </div>
@@ -80,7 +87,7 @@
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#3498db',
                     willClose: () => {
-                        window.location.href = '{{ route('liste_machine') }}';
+                        window.location.href = '{{ route('home') }}';
                     }
                 });
             </script>

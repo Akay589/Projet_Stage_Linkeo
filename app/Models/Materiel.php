@@ -11,7 +11,19 @@ class Materiel extends Model
 
 
     protected $fillable = [
-        "nom_materiel",
-        "route"
+       'categorie',
+       'designation',
+       'num_serie',
+       'date_achat',
+       'status',
+       'usager',
+       'etiquette',
+       'remarque',
+       'services',
+       'emplacement',
+       'type',
+       'operateur',
+       'mac',
+       'ip'
     ] ;
 }

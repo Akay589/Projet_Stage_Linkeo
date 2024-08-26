@@ -123,6 +123,14 @@ body {
     .container {
         min-width: 280px;
         }
+    .form-title {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            padding-bottom: 6px;
+            color: #6ca6e4;
+            border-bottom: solid 1px #1b26d5;
+          }
     .material-input-box {
         margin-bottom: 12px;
         width: 100%;
@@ -136,6 +144,38 @@ body {
     .main-material-info::-webkit-scrollbar {
         width: 0;
     }
+
+    .form-submit-btn {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+      }
+    .form-submit-btn button {
+        display: flex;
+        width: 70%;
+        margin-top: 10px;
+        font-size: 17px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background: #3498db;
+        justify-content: center;
+
+      }
+      .form-submit-btn input {
+        display: flex;
+        width: 70%;
+        margin-top: 10px;
+        font-size: 17px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background: #3498db;
+        justify-content: center;
+
+      }
 }
 
 

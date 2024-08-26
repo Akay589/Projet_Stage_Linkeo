@@ -66,18 +66,18 @@ body {
   .back {
     margin-top: 2rem;
     width: 5vw;
-    height: 6vh;
+    height: 4vh;
     background-color: #3498db;
-    border-radius: 5px;
+    border-radius: 3.5px;
   }
   .btn_back {
 
-      display: flex;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
     text-decoration: none;
     color: #f5f7f8;
     font-size: 20px;
-    align-items: center;
+
   }
 
   /**responsive design*/
@@ -86,7 +86,7 @@ body {
     .container {
         min-width: 392px;
         }
-        body {
+    body {
             display: flex;
             height: 100vh;
             justify-content: center;
@@ -94,38 +94,49 @@ body {
             background: #3498db;
             background-size: cover;
         }
+    .form-title {
+            font-size: 22.5px;
+            font-weight: 400;
+            text-align: center;
+            padding-bottom: 6px;
+            color: #6ca6e4;
+            border-bottom: solid 1px #1b26d5;
+          }
 
-        table {
+    table {
             width: 12vw;
           }
 
-          .back {
+    .back {
             margin-top: 2rem;
-            width: 25vw;
-            height: 5vh;
+            margin-left: 8rem;
+            width: 20vw;
+            height: 4vh;
             background-color: #3498db;
             border-radius: 5px;
             display: flex;
             justify-content: center;
           }
-          .btn_back {
+    .btn_back {
 
               display: flex;
               justify-content: center;
             text-decoration: none;
             color: #f5f7f8;
-            font-size: 20px;
+            font-size: 15px;
             align-items: center;
           }
-          th, td {
+    th, td {
             border: 1px solid black;
             text-align: center;
             font-size: 11.6px;
           }
-          .table-wrapper {
+    .table-wrapper {
             max-height: 450px;
             overflow-y: scroll;
             margin: 20px 0;
+            display: flex;
+            justify-content: center;
           }
 }
 

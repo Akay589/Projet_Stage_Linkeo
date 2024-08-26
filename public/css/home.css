@@ -6,21 +6,127 @@
 }
 
 
-html, body {
-    display: grid;
-    height: 100%;
-    place-items : center;
-    background-color:#1e90ff;
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #3498db;
+    background-size: cover;
+}
+.container {
+    width: 100%;
+    max-width: 1100px;
+    background: #f5f7f8;
+
+    margin: 0 28px;
+    border-radius: 10px;
+    box-shadow: inset -2px 2px 2px white;
 }
 
-.wrapper {
-    width: 380px;
-    background: white;
-    border-radius: 5px;
+.form-title {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 6px;
+    color: #6ca6e4;
+
+    border-bottom: solid 1px #1b26d5;
+  }
+form .btn {
+    width: 7rem;
+    height: 2rem;
+    background-color: blue;
+
+    color: white;
+  }
+.search_input
+{
+    height: 1.4rem;
 }
-.wrapper .log_title {
+#search_by{
+    height: 1.8rem;
+    width: 9rem;
+}
+.form_search
+{
+    margin: 20px 0 20px 470px;
+}
+
+
+table {
+     border: 1px solid #1b26d5;
+     width: 52vw;
+     border-collapse: separate;
+     border-spacing: 0px;
+
+  }
+th {
+      position: sticky;
+      top: 0px;
+
+      background-color: #151616;
+      color: white;
+     }
+.table-wrapper {
+    max-height: 350px;
+    overflow-y: scroll;
+    margin: 20px 0;
+    justify-content: center;
+    display: flex;
+  }
+
+
+  th, td {
+   border: 1px solid black;
+   text-align: center;
+   font-size: 16px;
+
+  }
+
+  .back {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.back .btn_back
+{
+    width: 155px;
+    height: 45px;
+    color: white;
+    background-color: #1b26d5;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+   justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+.back .btn_edit
+{
+    width: 180px;
+    height: 45px;
+    color: white;
+    background-color: #1b26d5;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.back a{
+ text-decoration: none;
+}
+
+
+.container .log_title {
     line-height: 80px;
-    background: #1c69c6;
+    background: #1665C4;
     text-align: center;
 
     border-radius: 5px 5px 0 0;
@@ -33,49 +139,15 @@ html, body {
     justify-content: center;
     margin-top: 5%;
   }
-.wrapper .menus {
-    padding: 30px 25px 25px 25px;
-}
-.wrapper .menus .row input{
-    height: 90%;
- width: 80%;
- padding-left: 60px;
- outline: none;
- border-radius: 5px;
- border: 1px solid lightgrey;
-}
-.wrapper .menus .row{
-    height: 45px;
 
-    margin-bottom: 15px;
-    position: relative;
-}
-.wrapper .menus .button a{
-    padding-left: 0px;
-    background: #2980b9;
-    border: 1px solid #2980b9;
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
 
-}
-.wrapper .menus .button button{
-    padding-left: 0px;
-    background: #2980b9;
-    border: 1px solid #2980b9;
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-
-}
 .logout {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     margin-bottom: 3%;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    margin-top: 3rem;
+  }
 .logout_icon {
     text-decoration: none;
 
@@ -89,61 +161,123 @@ html, body {
     max-width: 500px;
     margin: auto;
 }
+#scanner-container {
+    display: none; /* Masque le scanner par défaut */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
 
 
 
 /**responsive design*/
 @media (max-width: 650px)
  {
-    .wrapper {
-        width: 334px;
-        background: white;
-        border-radius: 5px;
-        height: 430px;
-      }
-      .wrapper .log_title {
-        line-height: 80px;
-        background: #2980b9;
-        text-align: center;
-        padding-left: 0;
-        border-radius: 5px 5px 0 0;
-        color: white;
-        font-size: 22px;
-        font-weight: 600;
-      }
-      .wrapper .menus .row input {
-        height: 90%;
-        width: 78%;
-        padding-left: 60px;
-        outline: none;
-        border-radius: 5px;
-        border: 1px solid lightgrey;
-      }
+    .container {
+        min-width: 392px;
+        }
+    body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: #3498db;
+            background-size: cover;
+        }
+    .form-title {
+            font-size: 22.5px;
+            font-weight: 400;
+            text-align: center;
+            padding-bottom: 6px;
+            color: #6ca6e4;
+            border-bottom: solid 1px #1b26d5;
+          }
+    form .btn {
+            height: 2rem;
 
-      .wrapper .menus {
-        padding: 30px 25px 25px 25px;
+            background: blue;
+            color: white;
+            border-radius: 8px;
+          }
+    .search_input
+    {
         margin-top: 0.5rem;
-      }
+        height: 1.5rem;
+    }
+    .form_search
+    {
+        margin: 20px 45px;
+    }
+    .form_search label
+    {
+        margin-left: 12px;
+    }
+    table {
+            width: 12vw;
+          }
 
-      .wrapper .menus .button a {
-        padding-left: 0px;
-        background: #2980b9;
-        border: 1px solid #2980b9;
-        cursor: pointer;
-        color: white;
-        font-size: 18px;
-        font-weight: 500;
+    .back {
+            margin-top: 2rem;
 
-      }
-      .wrapper .menus .button button {
-        padding-left: 0px;
-        background: #2980b9;
-        border: 1px solid #2980b9;
-        cursor: pointer;
-        color: white;
-        font-size: 18px;
-        font-weight: 500;
 
-      }
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+          }
+    .back .btn_back {
+            width: 136px;
+            height: 45px;
+            color: white;
+            background-color:  #1b26d5;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+          }
+    .back .btn_edit {
+            width: 175px;
+            height: 45px;
+            color: white;
+            background-color: #1b26d5;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+          }
+    th, td {
+            border: 1px solid black;
+            text-align: center;
+            font-size: 12px;
+          }
+    .table-wrapper {
+            max-height: 450px;
+            overflow-y: scroll;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+          }
+    .logout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3%;
+            margin-top: 2rem;
+          }
+
+
+
+
+
  }
 
