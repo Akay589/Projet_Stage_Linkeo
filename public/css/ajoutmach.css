@@ -2,9 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+
+    font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: #3498db;
+    background: #129cbe;
     background-size: cover;
 }
 .container {
@@ -24,15 +25,50 @@ body {
     border-radius: 10px;
     box-shadow: inset -2px 2px 2px white;
 }
+.relative {
+    position: relative;
+}
+
+.list-group {
+    position: absolute;
+    top: 89%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ddd;
+    max-height: 188px;
+    overflow-y: auto;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+    width: 95%;
+
+  }
+
+.list-group-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+}
+
+.list-group-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+
 
 .form-title {
     font-size: 30px;
     font-weight: 600;
     text-align: center;
     padding-bottom: 6px;
-    color: #6ca6e4;
+    color: #1665C4;
 
-    border-bottom: solid 1px #1b26d5;
+    border-bottom: solid 1px #1665C4;
   }
 
 .main-material-info {
@@ -40,6 +76,10 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 0;
+
+        max-height: 400px;
+        overflow: auto;
+
 }
 .material-input-box {
     display: flex;
@@ -84,7 +124,7 @@ body {
  border: none;
  border-radius: 3px;
  color: white;
- background: #3498db;
+ background: #1665C4;
 }
 .form-submit-btn input{
     display: block;
@@ -95,7 +135,7 @@ body {
     border: none;
     border-radius: 3px;
     color: white;
-    background: #3498db;
+    background: #1665C4;
    }
 
    .logout {
@@ -124,17 +164,33 @@ body {
         min-width: 280px;
         }
     .form-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 400;
             text-align: center;
             padding-bottom: 6px;
-            color: #6ca6e4;
-            border-bottom: solid 1px #1b26d5;
+            color:#1665C4;
+            border-bottom: solid 1px #1665C4;
           }
     .material-input-box {
         margin-bottom: 12px;
         width: 100%;
     }
+    .material-input-box label {
+        width: 95%;
+        color: #2f2b2b;
+        font-size: 19px;
+        font-weight: 500;
+        margin: 5px 0;
+      }
+      .material-input-box input {
+        width: 95%;
+        height: 40px;
+        border-radius: 7px;
+        outline: none;
+        border: 1px solid blue;
+        padding: 0 10px;
+        font-size: 15px;
+      }
 
     .main-material-info {
         max-height: 380px;
@@ -146,6 +202,11 @@ body {
     }
 
     .form-submit-btn {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+      }
+      .modif{
         margin-top: 40px;
         display: flex;
         justify-content: center;
@@ -159,9 +220,12 @@ body {
         border: none;
         border-radius: 3px;
         color: white;
-        background: #3498db;
+        background: #1665C4;
         justify-content: center;
 
+      }
+      .previous{
+        margin-top: 20px;
       }
       .form-submit-btn input {
         display: flex;
@@ -172,7 +236,7 @@ body {
         border: none;
         border-radius: 3px;
         color: white;
-        background: #3498db;
+        background: #1665C4;
         justify-content: center;
 
       }

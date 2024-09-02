@@ -44,7 +44,6 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
 
     Route::get('/home', [ViewController::class,'home'])->name('home');
     Route::get('/add_machine', [ViewController::class,'addMachine'])->name('add_machine');
-    Route::get('materiel/scanner', [ViewController::class,'scanner'])->name('materiel.scan');
 
 
 
@@ -54,9 +53,11 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
 
 
 
-    Route::get('/liste', [ViewController::class,'liste'])->name('liste');
 
-//***********Machine**************** */
+    //Route::get('/liste', [ViewController::class,'liste'])->name('liste');
+
+
+//***********Materiel**************** *
     Route::post('/materiel_add', [MaterielController::class,'store'])->name('materiel_add');
     Route::get('/voir_materiel/{id}', [MaterielController::class,'show'])->name('voir_materiel');
     Route::get('/generate_materiel/{id}', [MaterielController::class,'qrcode'])->name('generate_materiel');
@@ -66,13 +67,19 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
     Route::put('/update_materiel/{id}', [MaterielController::class,'update'])->name('update_materiel');
     Route::get('/materiels/search', [MaterielController::class, 'search'])->name('materiels.search');
 
-//***********Materiel**************** *//***********Materiel**************** */
     Route::get('/add_material', [MaterielController::class,'index'])->name('add_material');
 //***********End Materiel**************** *
 
     Route::get('/pdf/{id}', [QrcodeController::class,'qrcode_pdf'])->name('pdf');
 
 });
+
+Route::get('/fetch-ldap-users', [MaterielController::class, 'fetchUserLdap']);
+
+
+
+// routes/web.php
+Route::get('/ldap-users', [MaterielController::class, 'getallusers']);
 
 
 

@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Ldap\User;
 use App\Models\Materiel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
+use LdapRecord\Models\ActiveDirectory\User as LdapUser;
 
 class MaterielController extends Controller
 {
@@ -124,4 +130,45 @@ class MaterielController extends Controller
       $qrcode = QrCode::size(200)->generate($url);
       return view('welcome',compact('qrcode','id'));
   }
+
+
+  //ldap fonctionnality
+  public function fetchUserLdap(Request $request)
+    {
+        $search = $request->input('query');
+
+        // Rechercher les utilisateurs dont l'UID commence par la valeur recherchée
+        $users = User::where('displayname', 'starts_with', $search)->get();
+
+        // Filtrer les utilisateurs pour ne garder que ceux avec un displayname non vide
+        $filteredUsers = $users->filter(function ($user) {
+            return !empty($user->displayname);
+        });
+
+        // Extraire les displaynames
+        $displayNames = $filteredUsers->map(function ($user) {
+            return $user->displayname;
+        });
+
+        // Retourner un tableau JSON avec les displaynames
+        return response()->json($displayNames);
+    }
+
+
+
+
+    public function getallusers()
+    {
+        $users = User::all();
+
+        return response()->json($users);
+    }
+
+
+
+
+
+
 }
+
+

@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -24,7 +35,7 @@
                     <span>Suivi Matériel</span>
                 </div>
                 <!--div class="linkeo_logo">
-                    <img src="images/logo.png" alt="" />
+
                 </!--div!-->
                 <form class="form_search" action="{{ route('materiels.search') }}" method="GET">
                     <label for="search_by">Recherche par :</label>
@@ -32,12 +43,15 @@
                         <option value="categorie">Catégorie</option>
                         <option value="designation">Désignation</option>
                         <option value="usager">Usager</option>
-                        <option value="num_serie">Numéro de série</option>
+                        <option value="num_serie">Numéro de série/Imei</option>
                         <option value="services">Services</option>
+                        <option value="type">Type</option>
+                        <option value="mac">@Mac</option>
+                        <option value="ip">@ip</option>
                     </select>
 
                     <input class="search_input" type="text" name="query" placeholder="Entrez votre recherche..." required>
-                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                    <button class="search_btn" type="submit">Rechercher</button>
                 </form>
 
                 <div class="outer-wrapper">
@@ -65,10 +79,19 @@
 
                                         <td>{{$materiel->usager}}</td>
                                         <td>
-                                            <a class="btn btn-primary" href="{{ route('voir_materiel', $materiel->id) }}"><i class="fa-solid fa-circle-info"></i></a>
-                                            <a class="btn btn-success" href="{{ route('edit_materiel', $materiel->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a class="btn btn-danger" href="{{ route('delete_materiel', $materiel->id) }}"><i class="fa-solid fa-trash"></i></a>
-                                            <a class="btn btn-secondary" href="{{ route('generate_materiel', $materiel->id) }}"><i class="fa-solid fa-qrcode"></i></a>
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa-solid fa-caret-down"></i>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="{{ route('voir_materiel', $materiel->id) }}"><i class="fa-solid fa-circle-info"></i>  voir</a>
+                                                    <a class="dropdown-item" href="{{ route('edit_materiel', $materiel->id) }}"><i class="fa-solid fa-pen-to-square"></i>  Modifier</a>
+                                                    <a class="dropdown-item" href="{{ route('delete_materiel', $materiel->id) }}"><i class="fa-solid fa-trash"></i>  Supprimer</a>
+                                                    <a class="dropdown-item" href="{{ route('generate_materiel', $materiel->id) }}"><i class="fa-solid fa-qrcode"></i>  Générer CodeQr</a>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
 
@@ -81,18 +104,20 @@
                     </div>
                 </div>
                 <div class="back">
-                    <a class="btn_back" href="{{ route('materiel.scan') }}"  type="submit">
-                       Faire un scan
+                    <a class="btn_edit" href="{{ route('add_machine') }}">Nouveau matériel</a>
+
+                    <a class="btn_back" href="{{ route('logout_admin') }}" type="submit">
+                       Déconnecter
 
                     </a>
 
 
-                    <a class="btn_edit" href="{{ route('add_machine') }}">Nouveau matériel</a>
+
                 </div>
 
 
-                <div class="logout">
-                    <a class="logout_icon" href="{{ route('logout_admin') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <div class="linkeo_logo">
+                    <img src="images/logo.png" alt="" />
                 </div>
     </div>
 

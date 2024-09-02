@@ -3,6 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 
+
+        font-family: "Fira Sans", sans-serif;
+
+      font-style: normal;
+
 }
 
 body {
@@ -10,7 +15,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: #3498db;
+    background: #129cbe;
     background-size: cover;
 }
 .container {
@@ -28,11 +33,11 @@ body {
     font-weight: 400;
     text-align: center;
     padding-bottom: 6px;
-    color: #6ca6e4;
+    color: #1665C4;
     font-family: "Poppins", sans-serif;
 
     font-style: normal;
-    border-bottom: solid 1px #1b26d5;
+    border-bottom: solid 1px #1665C4;
   }
 
 .main-material-info {
@@ -76,7 +81,7 @@ p span {
     width: 110px;
     height: 45px;
     color: white;
-    background-color: #3498db;
+    background-color: #1665C4;
     text-align: center;
     border-radius: 5px;
     font-size: 18px;
@@ -90,7 +95,7 @@ p span {
     width: 110px;
     height: 45px;
     color: white;
-    background-color: #6ca6e4;
+    background-color: #1665C4;
     text-align: center;
     border-radius: 5px;
     font-size: 18px;
@@ -110,12 +115,12 @@ p span {
         min-width: 280px;
         }
     .form-title {
-            font-size: 22.5px;
+            font-size: 25.5px;
             font-weight: 400;
             text-align: center;
             padding-bottom: 6px;
-            color: #6ca6e4;
-            border-bottom: solid 1px #1b26d5;
+            color: #1665C4;
+            border-bottom: solid 1px #1665C4;
           }
     .material-input-box {
         margin-bottom: 12px;
@@ -131,7 +136,7 @@ p span {
         width: 0;
     }
     p span {
-        font-size: 15px;
+        font-size: 17px;
         font-weight: 600;
       }
     .back {
@@ -144,7 +149,7 @@ p span {
         width: 96px;
         height: 40px;
         color: white;
-        background-color: #3498db;
+        background-color: #1665C4;
         text-align: center;
         border-radius: 5px;
         font-size: 16px;
@@ -156,7 +161,7 @@ p span {
         width: 96px;
         height: 40px;
         color: white;
-        background-color: #6ca6e4;
+        background-color: #1665C4;
         text-align: center;
         border-radius: 5px;
         font-size: 15px;
