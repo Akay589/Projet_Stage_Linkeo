@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Ldap\User;
+use App\Ldap;
 use App\Models\Materiel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -35,6 +37,7 @@ class MaterielController extends Controller
          'operateur' => 'nullable|string',
          'mac' => 'nullable|string',
          'ip' => 'nullable|string',
+         'user' => 'nullable|string',
       ]);
 
       $materiels = new Materiel();
@@ -52,6 +55,7 @@ class MaterielController extends Controller
       $materiels->operateur = $request->input('operateur');
       $materiels->mac = $request->input('mac');
       $materiels->ip = $request->input('ip');
+      $materiels->user = $request->input('user');
       $materiels->save();
 
       return redirect()->back()->with('success','Créé avec succès!');
@@ -133,38 +137,89 @@ class MaterielController extends Controller
 
 
   //ldap fonctionnality
+
   public function fetchUserLdap(Request $request)
+  {
+      $query = $request->input('query', '');
+
+      // Si une query est fournie, filtrer par uid, sn ou givenname
+      if (!empty($query)) {
+          $users = User::where('uid', 'starts_with', $query)
+              ->orWhere('sn', 'starts_with', $query)
+              ->orWhere('givenname', 'starts_with', $query)
+              ->get();
+      } else {
+          // Pas de query fournie, récupérer tous les utilisateurs
+          $users = User::all();
+      }
+
+      // Filtrer les utilisateurs dont le displayName n'est pas null ou 'N/A'
+      $displayNames = $users->filter(function($user) {
+          return $user->displayName !== null && $user->displayName !== 'N/A';
+      })->pluck('displayName');
+
+      return response()->json($displayNames);
+  }
+
+
+
+
+
+
+
+
+
+
+    public function getUsersFromLdap()
     {
-        $search = $request->input('query');
 
-        // Rechercher les utilisateurs dont l'UID commence par la valeur recherchée
-        $users = User::where('displayname', 'starts_with', $search)->get();
+        $displayNames = collect();
 
-        // Filtrer les utilisateurs pour ne garder que ceux avec un displayname non vide
-        $filteredUsers = $users->filter(function ($user) {
-            return !empty($user->displayname);
+        // Récupérer les utilisateurs LDAP par paquets de 1000 (vous pouvez ajuster ce nombre)
+        User::select(['displayname'])->chunk(1000, function ($users) use ($displayNames) {
+            foreach ($users as $user) {
+                if (isset($user->displayname[0]) && $user->displayname[0] !== 'N/A') {
+                    $displayNames->push($user->displayname[0]);
+                }
+            }
         });
-
-        // Extraire les displaynames
-        $displayNames = $filteredUsers->map(function ($user) {
-            return $user->displayname;
-        });
-
-        // Retourner un tableau JSON avec les displaynames
-        return response()->json($displayNames);
+         // Retourner les displayNames
+         return response()->json(['users' => $displayNames]);
     }
 
 
 
 
-    public function getallusers()
-    {
-        $users = User::all();
 
-        return response()->json($users);
+
+    public function countDisplayNames()
+    {
+        $users = User::get();
+
+        // Filtrer les utilisateurs sans displayName
+        $usersWithoutDisplayName = $users->filter(function ($user) {
+            return !isset($user->displayName) || empty($user->displayName[0]);
+        });
+
+        // Compter le nombre d'utilisateurs sans displayName
+        $count = $usersWithoutDisplayName->count();
+
+
+        return response()->json(['total_display_names' => $count]);
     }
 
 
+    public function getAllUsers($blockSize = 1000)
+    {
+       // Utiliser un filtre pour ne récupérer que les utilisateurs avec un displayName non vide
+        $users = User::get();
+
+
+        return response()->json([
+
+            'users' => $users
+        ]);
+    }
 
 
 

@@ -2,21 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Camera;
-use App\Models\Casque;
-use App\Models\Domino;
-use App\Models\Ecran;
-use App\Models\Hautparleur;
-use App\Models\Imprimante;
-use App\Models\Machine;
+use App\Ldap\User;
+
+
+use Illuminate\Support\Facades\Log;
+use LdapRecord\Models\Model;
 use App\Models\Materiel;
-use App\Models\Onduleur;
-use App\Models\Phone;
-use App\Models\Projecteur;
-use App\Models\Server;
-use App\Models\Souri;
-use App\Models\Television;
-use Illuminate\Http\Request;
+
 
 class ViewController extends Controller
 {
@@ -42,10 +34,33 @@ class ViewController extends Controller
        }
 
               //add_machine page
-                    public function   addMachine ()
-                    {
-                        return view('pages.machines.ajoutMachine') ;
-                    }
+
+
+
+
+
+
+
+            public function addMachine()
+                {
+                    $users = User::get(); // Récupère tous les utilisateurs sans pagination
+
+
+                    return view('pages.machines.ajoutMachine', ['users' => $users]);
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

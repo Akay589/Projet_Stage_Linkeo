@@ -1,4 +1,5 @@
-<?php
+
+<!--?php
 
 
 
@@ -9,9 +10,12 @@ use LdapRecord\Models\ActiveDirectory\User as LdapUserModel;
 
 class LdapUser extends LdapUserModel
 {
-    // Si vous utilisez Active Directory, cette classe est généralement suffisante.
-    // Vous pouvez ajouter des méthodes ou des propriétés spécifiques ici.
-
+    protected $fillable = [
+        'uid',
+        'displayName',
+        'sn',
+        'givenName',
+    ];
     // Exemple : récupérer le prénom de l'utilisateur
     public function getFirstNameAttribute()
     {
@@ -25,27 +29,11 @@ class LdapUser extends LdapUserModel
     }
 
     // Exemple : récupérer l'email de l'utilisateur
-    public function getEmailAttribute()
+    public function getDisplayNameAttribute()
     {
-        return $this->mail; // Assurez-vous que 'mail' est le bon attribut LDAP
+        return $this->displayName; // Assurez-vous que 'mail' est le bon attribut LDAP
     }
-}
-namespace App\Ldap;
 
-use LdapRecord\Models\Model;
-
-class User extends Model
-{
-    protected $fillable = [
-        'uid',
-        'cn',
-        'sn',
-        'mail',
-    ];
-
-    public function getLdapDomainColumn()
-    {
-        return 'uid';
-    }
 }
 
+*/

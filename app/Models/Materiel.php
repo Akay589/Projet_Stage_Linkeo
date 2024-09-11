@@ -24,6 +24,7 @@ class Materiel extends Model
        'type',
        'operateur',
        'mac',
-       'ip'
+       'ip',
+       'user'
     ] ;
 }

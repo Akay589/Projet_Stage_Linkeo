@@ -66,7 +66,7 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
     Route::delete('/destroy_materiel/{id}', [MaterielController::class,'destroy'])->name('destroy_materiel');
     Route::put('/update_materiel/{id}', [MaterielController::class,'update'])->name('update_materiel');
     Route::get('/materiels/search', [MaterielController::class, 'search'])->name('materiels.search');
-
+    Route::get('/fetch-ldap-users', [MaterielController::class, 'fetchUserLdap'])->name('fetch-ldap-users');
     Route::get('/add_material', [MaterielController::class,'index'])->name('add_material');
 //***********End Materiel**************** *
 
@@ -74,13 +74,16 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
 
 });
 
-Route::get('/fetch-ldap-users', [MaterielController::class, 'fetchUserLdap']);
+
 
 
 
 // routes/web.php
-Route::get('/ldap-users', [MaterielController::class, 'getallusers']);
 
 
+Route::get('/ldap-users', [MaterielController::class, 'getUsersFromLdap']);
 
+Route::get('/count_displayname', [MaterielController::class, 'countDisplayNames']);
+
+Route::get('/users', [MaterielController::class, 'getAllUsers']);
 

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('operateur')->nullable();
             $table->string('mac')->nullable();
             $table->string('ip')->nullable();
+            $table->string('user')->nullable();
             $table->timestamps();
         });
     }

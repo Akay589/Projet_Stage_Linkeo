@@ -51,6 +51,10 @@
 
                     </div>
                     <div class="material-input-box">
+                        <p id="user"> <span>Utilisateur :</span> {{ $materiels->user}}</p>
+
+                    </div>
+                    <div class="material-input-box">
                         <p id="etiquette">  <span>Etiquette :</span> {{ $materiels->etiquette}}</p>
 
                     </div>

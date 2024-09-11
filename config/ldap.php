@@ -41,6 +41,7 @@ return [
             'sasl_options' => [
                 // 'mech' => 'GSSAPI',
             ],
+
         ],
 
     ],
@@ -77,5 +78,8 @@ return [
         'enabled' => env('LDAP_CACHE', false),
         'driver' => env('CACHE_DRIVER', 'file'),
     ],
+
+    'timeout' => env('LDAP_TIMEOUT', 100), // Augmenter à 10 ou plus
+
 
 ];

@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--fontawesome-->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!--Google fonts-->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!--sweetalert2-->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="{{ url('css/ajoutmach.css') }}">
-    <title>Edit</title>
+    <!-- Add jQuery UI CSS and JS files -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="http://mysite.com/jquery.min.js"><\/script>');
+        </script>
+
+   <title>Edit</title>
 </head>
 <body>
     <div class="container">
@@ -49,13 +55,24 @@
                         <option value="HS">HS</option>
                     </select>
                 </div>
+                <div class="material-input-box ">
+                    <label for="user">user :</label>
+                    <input type="text" name="user" id="user" value="{{ $materiels->user }}">
+                </div>
+
                 <div class="material-input-box relative">
                     <label for="usager">Usager :</label>
-                    <input type="text" name="usager" id="usager" value="{{ $materiels->usager }}">
+                    <div class="input-with-icon">
+                        <input type="text" name="usager" id="usager" value="{{ $materiels->usager }}">
+                        <!-- Icône de dropdown -->
+
+                    </div>
+                    <span class="dropdown-icon" id="dropdown-icon">&#x25BC;</span> <!-- Icône de flèche vers le bas -->
                     <ul id="dropdown" class="list-group" style="display: none;">
                         <!-- Les options seront ajoutées dynamiquement ici -->
                     </ul>
                 </div>
+
                 <div class="material-input-box">
                     <label for="etiquette">Etiquette :</label>
                     <input type="text" name="etiquette" id="etiquette" value="{{ $materiels->etiquette }}">
@@ -116,55 +133,77 @@
             </script>
        @endif
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const input = document.getElementById('usager');
-                const dropdown = document.getElementById('dropdown');
+       <script>
+            $(document).ready(function() {
+                let dropdownVisible = false; // État du dropdown
 
-                // Fonction pour récupérer les utilisateurs LDAP et mettre à jour le dropdown
-                function fetchUsers() {
-                    const query = input.value.trim(); // Supprimer les espaces inutiles
-                    if (query.length < 1) {
-                        dropdown.style.display = 'none';
-                        return;
-                    }
-
-                    fetch(`/fetch-ldap-users?query=${query}`)
-                        .then(response => response.json())
-                        .then(displayNames => {
-                            dropdown.innerHTML = ''; // Vider les options existantes
-                            if (displayNames.length > 0) {
-                                dropdown.style.display = 'block';
-                                displayNames.forEach(name => {
-                                    const li = document.createElement('li');
-                                    li.textContent = name;
-                                    li.classList.add('list-group-item');
-                                    li.addEventListener('click', () => {
-                                        input.value = name;
-                                        dropdown.style.display = 'none';
-                                    });
-                                    dropdown.appendChild(li);
+                // Fonction pour afficher ou cacher le dropdown quand on clique sur l'icône du dropdown
+                $('#dropdown-icon').on('click', function() {
+                    if (dropdownVisible) {
+                        // Si le dropdown est visible, le cacher
+                        $('#dropdown').hide();
+                        dropdownVisible = false;
+                    } else {
+                        // Si le dropdown est caché, l'afficher
+                        $.ajax({
+                            url: '/fetch-ldap-users',
+                            method: 'GET',
+                            data: { query: '' }, // Envoyer une chaîne vide pour récupérer tous les utilisateurs
+                            success: function(data) {
+                                $('#dropdown').empty().show();
+                                data.forEach(function(displayName) {
+                                    $('#dropdown').append('<li>' + displayName + '</li>');
                                 });
-                            } else {
-                                dropdown.style.display = 'none';
+                                dropdownVisible = true;
+                            },
+                            error: function(error) {
+                                console.error(error);
                             }
-                        })
-                        .catch(error => {
-                            console.error('Erreur lors de la récupération des utilisateurs:', error);
-                            dropdown.style.display = 'none';
                         });
-                }
-
-                // Écouteur d'événement pour l'entrée de l'utilisateur
-                input.addEventListener('input', fetchUsers);
-
-                // Écouteur d'événement pour masquer le dropdown lorsque l'utilisateur clique en dehors
-                document.addEventListener('click', function(event) {
-                    if (!dropdown.contains(event.target) && event.target !== input) {
-                        dropdown.style.display = 'none';
                     }
                 });
+
+                // Gérer l'événement de saisie dans l'input pour filtrer les résultats
+                $('#usager').on('keyup', function() {
+                    let query = $(this).val();
+                    if (query.length > 0) {
+                        $.ajax({
+                            url: '/fetch-ldap-users',
+                            method: 'GET',
+                            data: { query: query },
+                            success: function(data) {
+                                $('#dropdown').empty().show();
+                                data.forEach(function(displayName) {
+                                    $('#dropdown').append('<li>' + displayName + '</li>');
+                                });
+                                dropdownVisible = true;
+                            },
+                            error: function(error) {
+                                console.error(error);
+                            }
+                        });
+                    } else {
+                        $('#dropdown').hide();
+                        dropdownVisible = false;
+                    }
+                });
+
+                // Cacher le dropdown si on clique en dehors
+                $(document).on('click', function(event) {
+                    if (!$(event.target).closest('.material-input-box').length) {
+                        $('#dropdown').hide();
+                        dropdownVisible = false;
+                    }
+                });
+
+                // Afficher la valeur sélectionnée dans l'input
+                $(document).on('click', '#dropdown li', function() {
+                    $('#usager').val($(this).text());
+                    $('#dropdown').hide();
+                    dropdownVisible = false;
+                });
             });
+
         </script>
 </body>
 </html>

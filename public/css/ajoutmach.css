@@ -25,39 +25,101 @@ body {
     border-radius: 10px;
     box-shadow: inset -2px 2px 2px white;
 }
-.relative {
+.input-with-icon {
     position: relative;
+    display: flex;
+    align-items: center;
+    width: 95%;
 }
 
-.list-group {
-    position: absolute;
-    top: 89%;
-    left: 0;
-    right: 0;
-    border: 1px solid #ddd;
-    max-height: 188px;
-    overflow-y: auto;
-    background-color: white;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    z-index: 1000;
-    width: 95%;
 
+#usager {
+    flex: 1;
+    padding: 0 50px 0 10px;
   }
 
-.list-group-item {
-    padding: 8px;
+.dropdown-icon {
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
-    background-color: white;
+    padding: 5px;
+    position: absolute;
+    right: 19px;
+    top: 59%;
+    transform: translateY(-50%);
+  }
+
+/* Style de base pour l'input */
+.relative{
+    position: relative;
+}
+.relative input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-.list-group-item:hover {
+.relative input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+
+/* Style du dropdown */
+#dropdown {
+    display: none;
+    position: relative;
+    width: 94%;
+    background-color: white;
+    border: 1px solid #ccc;
+      border-top-width: 1px;
+      border-top-style: solid;
+      border-top-color: rgb(204, 204, 204);
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+#dropdown.active {
+    display: block;  /* Affiché lorsqu'il a la classe active */
+}
+
+/* Style des items du dropdown */
+#dropdown .list-group-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+/* Changement de couleur au hover */
+#dropdown .list-group-item:hover {
     background-color: #f0f0f0;
 }
 
+/* Style si aucune option n'est trouvée */
+#dropdown .list-group-item.no-results {
+    text-align: center;
+    color: #999;
+}
 
+/* Scrollbar pour la liste */
+#dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+#dropdown::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+#dropdown::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
 
 
 

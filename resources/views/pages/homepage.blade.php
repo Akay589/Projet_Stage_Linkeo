@@ -43,6 +43,7 @@
                         <option value="categorie">Catégorie</option>
                         <option value="designation">Désignation</option>
                         <option value="usager">Usager</option>
+                        <option value="user">Utilisateur</option>
                         <option value="num_serie">Numéro de série/Imei</option>
                         <option value="services">Services</option>
                         <option value="type">Type</option>
