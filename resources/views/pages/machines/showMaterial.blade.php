@@ -21,73 +21,101 @@
 </head>
 <body>
       <div class="container">
-             <div class="form-title">
+            <div class="form-title">
                    <span>Détails Matériel</span>
-             </div>
+            </div>
 
-                 <div class="main-material-info">
+            <div class="main-material-info">
+                @if(isset($materiels->categorie) && !empty($materiels->categorie))
                     <div class="material-input-box">
-                         <p id="categorie"> <span>Catégorie : </span> {{ $materiels->categorie}}</p>
-
+                        <p id="categorie"> <span>Catégorie : </span> {{ $materiels->categorie}}</p>
                     </div>
+                @endif
+
+                @if(isset($materiels->designation) && !empty($materiels->designation))
                     <div class="material-input-box">
                         <p id="designation"> <span>Désignation : </span> {{ $materiels->designation}}</p>
+                    </div>
+                @endif
 
-                   </div>
+                @if(isset($materiels->num_serie) && !empty($materiels->num_serie))
                     <div class="material-input-box">
                         <p id="num_serie"> <span> Numéro de série/Imei:</span> {{ $materiels->num_serie}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->date_achat) && !empty($materiels->date_achat))
                     <div class="material-input-box">
                         <p id="date_achat"> <span>date d'achat :</span> {{ $materiels->date_achat}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->status) && !empty($materiels->status))
                     <div class="material-input-box">
                         <p id="status"> <span>status :</span>  {{ $materiels->status}}</p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->usager) && !empty($materiels->usager))
                     <div class="material-input-box">
-                        <p id="usager"> <span>Usager :</span> {{ $materiels->usager}}</p>
-
+                        <p id="usager"> <span>Utilisateur :</span> {{ $materiels->usager}}</p>
                     </div>
+                @endif
+
+                @if(isset($materiels->user) && !empty($materiels->user))
                     <div class="material-input-box">
-                        <p id="user"> <span>Utilisateur :</span> {{ $materiels->user}}</p>
-
+                        <p id="user"> <span>Usager :</span> {{ $materiels->user}}</p>
                     </div>
+                @endif
+
+                @if(isset($materiels->etiquette) && !empty($materiels->etiquette))
                     <div class="material-input-box">
                         <p id="etiquette">  <span>Etiquette :</span> {{ $materiels->etiquette}}</p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->remarque) && !empty($materiels->remarque))
                     <div class="material-input-box">
                         <p id="remarque"> <span>Remarque :</span> {{ $materiels->remarque}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->emplacement) && !empty($materiels->emplacement))
                     <div class="material-input-box">
                         <p id="emplacement"> <span>Emplacement :</span> {{ $materiels->emplacement}} </p>
-
                     </div>
+                @endif
 
+                @if(isset($materiels->services) && !empty($materiels->services))
                     <div class="material-input-box">
                         <p id="services"> <span> Poste :</span> {{ $materiels->services}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->type) && !empty($materiels->type))
                     <div class="material-input-box">
                         <p id="type"> <span> Type :</span> {{ $materiels->type}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->operateur) && !empty($materiels->operateur))
                     <div class="material-input-box">
                         <p id="operateur"> <span> Opérateur :</span> {{ $materiels->operateur}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->mac) && !empty($materiels->mac))
                     <div class="material-input-box">
                         <p id="mac"> <span> @Mac :</span> {{ $materiels->mac}} </p>
-
                     </div>
+                @endif
+
+                @if(isset($materiels->ip) && !empty($materiels->ip))
                     <div class="material-input-box">
                         <p id="ip"> <span> @IP :</span> {{ $materiels->ip}} </p>
-
                     </div>
-                 </div>
+                @endif
+            </div>
                  <br>
 
             <div class="back">

@@ -1,25 +1,16 @@
 <?php
 
 
+use BotMan\BotMan\Drivers\DriverManager;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TeleController;
+use App\Http\Controllers\BotController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\EcranController;
-use App\Http\Controllers\PhoneController;
-use App\Http\Controllers\SouriController;
-
-use App\Http\Controllers\CameraController;
-use App\Http\Controllers\CasqueController;
-use App\Http\Controllers\DominoController;
+use BotMan\BotMan\BotMan;
 use App\Http\Controllers\QrcodeController;
-use App\Http\Controllers\ServerController;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\MaterielController;
-use App\Http\Controllers\OnduleurController;
-use App\Http\Controllers\ImprimanteController;
-use App\Http\Controllers\ProjecteurController;
-use App\Http\Controllers\HautparleurController;
+use App\Http\Controllers\DataPreparationController;
 
 
 
@@ -54,7 +45,7 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
 
 
 
-    //Route::get('/liste', [ViewController::class,'liste'])->name('liste');
+
 
 
 //***********Materiel**************** *
@@ -71,14 +62,18 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function ()
 //***********End Materiel**************** *
 
     Route::get('/pdf/{id}', [QrcodeController::class,'qrcode_pdf'])->name('pdf');
+    // Chat boat
+
+
+
+
+
+
+
+
+
 
 });
-
-
-
-
-
-// routes/web.php
 
 
 Route::get('/ldap-users', [MaterielController::class, 'getUsersFromLdap']);
@@ -86,4 +81,10 @@ Route::get('/ldap-users', [MaterielController::class, 'getUsersFromLdap']);
 Route::get('/count_displayname', [MaterielController::class, 'countDisplayNames']);
 
 Route::get('/users', [MaterielController::class, 'getAllUsers']);
+
+
+
+
+
+
 

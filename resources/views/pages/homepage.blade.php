@@ -61,7 +61,7 @@
                             <thead>
                                   <th>Catégorie</th>
                                   <th>Designation</th>
-                                  <th>Usager</th>
+                                  <th>User</th>
                                   <th>Action</th>
                             </thead>
 

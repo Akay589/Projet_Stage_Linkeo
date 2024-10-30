@@ -15,7 +15,7 @@
       <div class="container">
 
             <div class="title">
-                <h5>Qr code du ID = {{ $id }}</h5>
+                <h5>Qr code</h5>
             </div>
             <div class="image">
                 {!! $qrcode !!}

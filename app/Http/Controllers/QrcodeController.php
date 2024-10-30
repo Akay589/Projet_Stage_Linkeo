@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Machine;
+use App\Models\Materiel;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrcodeController extends Controller
 {
-  /*  public function qrcode()
-    {
-       // $data = Machine::find(4);
-        $qrcode = QrCode::size(200)->generate('http://www.facebook.com');
-        return view('welcome',compact('qrcode'));
-    }
 
-*/
 
     public function qrcode_pdf($id)
     {
@@ -25,14 +19,18 @@ class QrcodeController extends Controller
         $qrCodePath = storage_path('app/public/qrcode.png');
         file_put_contents($qrCodePath, $qrcode);
 
+        // Get the material with its designation
+        $material = Materiel::find($id);
+
         $data = [
             'id' => $id,
-            'qrCodePath' => $qrCodePath
+            'qrCodePath' => $qrCodePath,
+            'designation' => $material->designation
         ];
+
         $pdf = PDF::loadView('pdf.qrcode_pdf', $data);
         return $pdf->download('qrcode-' . $id . '.pdf');
-
-
     }
+
 
 }

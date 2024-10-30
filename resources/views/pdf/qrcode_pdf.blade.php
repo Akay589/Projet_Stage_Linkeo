@@ -11,7 +11,7 @@
       <div class="container">
 
             <div class="title">
-                <h5>Qr code du ID = {{ $id }}</h5>
+                <h5>Qr code du {{ $designation }}</h5>
             </div>
             <div class="image">
                 <img src="{{ $qrCodePath }}" alt="QR Code">

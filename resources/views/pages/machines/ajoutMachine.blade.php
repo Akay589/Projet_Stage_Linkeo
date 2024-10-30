@@ -34,25 +34,22 @@
              <form action="{{ route('materiel_add') }}" method="POST" enctype="multipart/form-data">
               @csrf
                  <div class="main-material-info">
-                    <div class="material-input-box">
-                        <label for="categorie">Catégorie : </label>
-                        <input type="text" name="categorie" id="categorie" placeholder="Catégorie du matériel">
-                   </div>
+
                     <div class="material-input-box">
                          <label for="designation">Designation : </label>
-                         <input type="text" name="designation" id="designation" placeholder="Désignation du matériel">
+                         <input type="text" name="Designation" id="designation" placeholder="Désignation du matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="num_serie">Numéro de série/Imei :</label>
-                        <input type="text" name="num_serie" id="num_serie" placeholder="Numéro de série">
+                        <input type="text" name="Num_Serie" id="num_serie" placeholder="Numéro de série">
                     </div>
                     <div class="material-input-box">
                         <label for="date_achat">Date d'achat :</label>
-                        <input type="text" name="date_achat" id="date_achat" placeholder="Date d'achat">
+                        <input type="text" name="Date_Achat" id="date_achat" placeholder="Date d'achat">
                     </div>
                     <div class="material-input-box">
                         <label for="status">Status :</label>
-                         <select name="status" id="status">
+                         <select name="Status" id="status">
                                <option value="OK-Service">OK-Service</option>
                                <option value="OK-Stock">OK-Stock</option>
                                <option value="HS">HS</option>
@@ -60,58 +57,53 @@
 
                     </div>
                     <div class="material-input-box ">
-                        <label for="user">user :</label>
-                        <input type="text" name="user" id="user" placeholder="Propriétaire du matériel">
+                        <label for="user">Usager :</label>
+                        <input type="text" name="User" id="user" placeholder="Propriétaire du matériel">
                     </div>
 
                     <div class="material-input-box relative">
-                        <label for="usager">Usager :</label>
+                        <label for="usager">User :</label>
                         <div class="input-with-icon">
-                            <input type="text" name="usager" id="usager" placeholder="Propriétaire du matériel">
-                            <!-- Icône de dropdown -->
+                            <input type="text" name="Usager" id="usager" placeholder="Propriétaire du matériel">
+
 
                         </div>
-                        <span class="dropdown-icon" id="dropdown-icon">&#x25BC;</span> <!-- Icône de flèche vers le bas -->
                         <ul id="dropdown" class="list-group" style="display: none;">
                             <!-- Les options seront ajoutées dynamiquement ici -->
                         </ul>
                     </div>
 
-
-
-
-
                     <div class="material-input-box">
                         <label for="etiquette">Etiquette :</label>
-                        <input type="text" name="etiquette" id="etiquette" placeholder="Etiquette">
+                        <input type="text" name="Etiquette" id="etiquette" placeholder="Etiquette">
                     </div>
                     <div class="material-input-box">
                         <label for="remarque">Remarque :</label>
-                        <input type="text" name="remarque" id="remarque" placeholder="Remarque sur ce matériel">
+                        <input type="text" name="Remarque" id="remarque" placeholder="Remarque sur ce matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="services">Emplacement :</label>
-                        <input type="text" name="emplacement" id="emplacement" placeholder="l'emplacement du matériel">
+                        <input type="text" name="Emplacement" id="emplacement" placeholder="l'emplacement du matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="services">Poste :</label>
-                        <input type="text" name="services" id="services" placeholder="La fonction du propriétaire">
+                        <input type="text" name="Services" id="services" placeholder="La fonction du propriétaire">
                     </div>
                     <div class="material-input-box">
                         <label for="services">Type :</label>
-                        <input type="text" name="type" id="type" placeholder="Le type du matériel">
+                        <input type="text" name="Type" id="type" placeholder="Le type du matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="services">Operateur :</label>
-                        <input type="text" name="operateur" id="operateur" placeholder="L'opérateur du propriétaire">
+                        <input type="text" name="Operateur" id="operateur" placeholder="L'opérateur">
                     </div>
                     <div class="material-input-box">
                         <label for="services">@Mac :</label>
-                        <input type="text" name="mac" id="mac" placeholder="L'adresse mac du matériel">
+                        <input type="text" name="Mac" id="mac" placeholder="L'adresse mac du matériel">
                     </div>
                     <div class="material-input-box">
                         <label for="services">@IP :</label>
-                        <input type="text" name="ip" id="ip" placeholder="L'adresse ip du matériel">
+                        <input type="text" name="Ip" id="ip" placeholder="L'adresse ip du matériel">
                     </div>
                  </div>
                  <br>
@@ -130,49 +122,38 @@
 
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       @if(session('success'))
-            <script>
-                Swal.fire({
-                    title: 'Succès!',
-                    text: '{{ session('success') }}',
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#3498db',
-                    willClose: () => {
-                        window.location.href = '{{ route('home') }}';
-                    }
-                });
-            </script>
-       @endif
+        <script>
+        Swal.fire({
+            title: 'Succès!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3498db',
+            willClose: () => {
+                window.location.href = '{{ route('home') }}';
+            }
+        });
+        </script>
+      @endif
+
+      @if(session('error'))
+        <script>
+        Swal.fire({
+            title: 'Erreur!',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#e74c3c'
+        });
+        </script>
+      @endif
+
 
        <script>
             $(document).ready(function() {
                 let dropdownVisible = false; // État du dropdown
 
-                // Fonction pour afficher ou cacher le dropdown quand on clique sur l'icône du dropdown
-                $('#dropdown-icon').on('click', function() {
-                    if (dropdownVisible) {
-                        // Si le dropdown est visible, le cacher
-                        $('#dropdown').hide();
-                        dropdownVisible = false;
-                    } else {
-                        // Si le dropdown est caché, l'afficher
-                        $.ajax({
-                            url: '/fetch-ldap-users',
-                            method: 'GET',
-                            data: { query: '' }, // Envoyer une chaîne vide pour récupérer tous les utilisateurs
-                            success: function(data) {
-                                $('#dropdown').empty().show();
-                                data.forEach(function(displayName) {
-                                    $('#dropdown').append('<li>' + displayName + '</li>');
-                                });
-                                dropdownVisible = true;
-                            },
-                            error: function(error) {
-                                console.error(error);
-                            }
-                        });
-                    }
-                });
+
 
                 // Gérer l'événement de saisie dans l'input pour filtrer les résultats
                 $('#usager').on('keyup', function() {
@@ -219,12 +200,5 @@
 
 
        </script>
-
-
-
-
-
-
-
 
 </html>

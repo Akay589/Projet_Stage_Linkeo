@@ -54,12 +54,12 @@ form .search_btn {
     margin: 20px 0 20px 410px;
   }
 
-table {
-     border: 1px solid #1b26d5;
-     width: 52vw;
-     border-collapse: separate;
-     border-spacing: 0px;
-
+  table {
+    border: 1px solid #1b26d5;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    max-width: 70vw;
   }
 
 th {
@@ -72,10 +72,10 @@ th {
 .table-wrapper {
     max-height: 350px;
     overflow-y: scroll;
-    margin: 20px 0;
+    margin: 40px;
     justify-content: center;
     display: flex;
-  }
+}
 
 
   th, td {
@@ -177,7 +177,7 @@ thead {
 
 
 .dropdown {
-    position: relative;
+    position: initial;
     display: inline-block;
 }
 
@@ -272,8 +272,8 @@ thead {
         margin-left: 12px;
     }
     table {
-            width: 12vw;
-          }
+        width: 100%;
+      }
 
     .back {
             margin-top: 2rem;
@@ -312,12 +312,13 @@ thead {
             text-align: center;
             font-size: 11.4px;
           }
-    .table-wrapper {
+          .table-wrapper {
             max-height: 340px;
             overflow-y: scroll;
-            margin: 20px 0;
+            margin: 10px;
             display: flex;
             justify-content: center;
+
           }
     .logout_icon {
 

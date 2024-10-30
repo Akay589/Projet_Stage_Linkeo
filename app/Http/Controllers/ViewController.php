@@ -13,41 +13,44 @@ use App\Models\Materiel;
 class ViewController extends Controller
 {
     //login page
-  public function login()
+    public function login()
     {
         return view('pages.athentification') ;
     }
 
      //home page
-     public function home()
-     {
+    public function home()
+    {
         $materiels = Materiel::all();
 
 
          return view('pages.homepage', compact('materiels'));
-     }
+    }
 
      //Add_material page
-       public function addMat()
-       {
-           return view('pages.ajoutMateriel') ;
-       }
+    public function addMat()
+    {
+        return view('pages.ajoutMateriel') ;
+    }
 
-              //add_machine page
+    //add_machine page
 
-
-
-
-
-
-
-            public function addMachine()
-                {
-                    $users = User::get(); // Récupère tous les utilisateurs sans pagination
+    public function Bot()
+    {
+         return view('botman.chat');
+    }
 
 
-                    return view('pages.machines.ajoutMachine', ['users' => $users]);
-                }
+
+
+
+    public function addMachine()
+    {
+        $users = User::get(); // Récupère tous les utilisateurs sans pagination
+
+
+        return view('pages.machines.ajoutMachine', ['users' => $users]);
+    }
 
 
 

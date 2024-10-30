@@ -56,18 +56,17 @@
                     </select>
                 </div>
                 <div class="material-input-box ">
-                    <label for="user">user :</label>
+                    <label for="user">Usager :</label>
                     <input type="text" name="user" id="user" value="{{ $materiels->user }}">
                 </div>
 
                 <div class="material-input-box relative">
-                    <label for="usager">Usager :</label>
+                    <label for="usager">User :</label>
                     <div class="input-with-icon">
                         <input type="text" name="usager" id="usager" value="{{ $materiels->usager }}">
                         <!-- Icône de dropdown -->
 
                     </div>
-                    <span class="dropdown-icon" id="dropdown-icon">&#x25BC;</span> <!-- Icône de flèche vers le bas -->
                     <ul id="dropdown" class="list-group" style="display: none;">
                         <!-- Les options seront ajoutées dynamiquement ici -->
                     </ul>
@@ -136,32 +135,6 @@
        <script>
             $(document).ready(function() {
                 let dropdownVisible = false; // État du dropdown
-
-                // Fonction pour afficher ou cacher le dropdown quand on clique sur l'icône du dropdown
-                $('#dropdown-icon').on('click', function() {
-                    if (dropdownVisible) {
-                        // Si le dropdown est visible, le cacher
-                        $('#dropdown').hide();
-                        dropdownVisible = false;
-                    } else {
-                        // Si le dropdown est caché, l'afficher
-                        $.ajax({
-                            url: '/fetch-ldap-users',
-                            method: 'GET',
-                            data: { query: '' }, // Envoyer une chaîne vide pour récupérer tous les utilisateurs
-                            success: function(data) {
-                                $('#dropdown').empty().show();
-                                data.forEach(function(displayName) {
-                                    $('#dropdown').append('<li>' + displayName + '</li>');
-                                });
-                                dropdownVisible = true;
-                            },
-                            error: function(error) {
-                                console.error(error);
-                            }
-                        });
-                    }
-                });
 
                 // Gérer l'événement de saisie dans l'input pour filtrer les résultats
                 $('#usager').on('keyup', function() {

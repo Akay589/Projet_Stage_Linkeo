@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('usager')->nullable();
             $table->string('etiquette')->nullable();
-            $table->string('remarque')->nullable();
+            $table->text('remarque')->nullable();
             $table->string('services')->nullable();
             $table->string('emplacement')->nullable();
             $table->string('type')->nullable();
